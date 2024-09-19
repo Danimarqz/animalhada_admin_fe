@@ -16,12 +16,12 @@ const totalPages = Math.ceil(total / PRODUCTS_PER_PAGE);
 
     <ul>
       {products.map(product => (
-        <li id={product.id}>
+        <li id={String(product.id)}>
           <h2>{product.name}</h2>
           <p>{product.description}</p>
-          <p>Precio: {product.price.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
+          <p>Precio: {product.price && product.price.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
           {product.img_url && <img src={product.img_url} alt={product.name} />}
-          <p>Categorías: {product.category.join(', ')}</p>
+          <p>Categorías: {product.category && product.category.join(', ')}</p>
         </li>
       ))}
     </ul>
