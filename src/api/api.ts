@@ -17,7 +17,6 @@ export async function GetProducts(page = 1, order = false): Promise<APIresponse<
     
     const response = await fetch(pagination(url, page, order), {
         method: 'GET',
-        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
             'Origin': import.meta.env.SITE_URL
@@ -34,7 +33,6 @@ export async function GetProducts(page = 1, order = false): Promise<APIresponse<
 export async function GetOne(id: number): Promise<Product> {
     const response = await fetch(`${base_url}/product/id/${id}`, {
         method: 'GET',
-        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
             'Origin': import.meta.env.SITE_URL
@@ -51,7 +49,6 @@ export async function GetByCategory(categories: string[], page = 1, order = fals
     url = pagination(url, page, order)
     const response = await fetch(url, {
         method: 'GET',
-        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
             'Origin': import.meta.env.SITE_URL
