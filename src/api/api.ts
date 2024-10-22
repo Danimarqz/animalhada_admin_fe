@@ -1,5 +1,5 @@
 import type { Tables, TablesInsert, TablesUpdate } from "../types/database.types";
-import Security from "../utils/security";
+import { encrypt } from "../utils/security";
 
 
 export type Product = Tables<'product'>
@@ -61,13 +61,8 @@ export async function GetByCategory(categories: string[], page = 1, order = fals
 
 export async function UserLogin(username: string, password: string) {
     try {
-        const security = new Security();
         const data: string = JSON.stringify({ username, password });
-        const dataEncrypted: string | undefined = security.encrypt(data);
-
-        if (!dataEncrypted) {
-            throw new Error('Encryption failed');
-        }
+        const dataEncrypted: string = encrypt(data);
 
         const url = `${base_url}/auth`;
 
