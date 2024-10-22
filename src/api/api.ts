@@ -59,7 +59,7 @@ export async function GetByCategory(categories: string[], page = 1, order = fals
     }
 }
 
-export async function Login(username: string, password: string) {
+export async function UserLogin(username: string, password: string) {
     try {
         const security = new Security();
         const data: string = JSON.stringify({ username, password });
